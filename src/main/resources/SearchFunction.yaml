@@ -1,0 +1,25 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Search function using cloudsearch
+Resources:
+  SearchFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: com.zend.lambda.search.LambdaFunctionHandler
+      Runtime: java8
+      CodeUri: .
+      Description: Search function using cloudsearch
+      MemorySize: 512
+      Timeout: 15
+      Role: 'arn:aws:iam::705548261754:role/lambda_basic_execution'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /SearchFunction
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /SearchFunction
+            Method: POST
